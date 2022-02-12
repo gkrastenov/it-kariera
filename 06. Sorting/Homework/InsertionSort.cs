@@ -1,6 +1,6 @@
 ﻿using System;
 
-class FoldAndSum 
+class InsertionSort 
 {
     public static void Main()
     {

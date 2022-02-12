@@ -1,6 +1,6 @@
 ﻿using System;
 
-class FoldAndSum 
+class SelectionSort
 {
     public static void Main()
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-class FoldAndSum 
+class BubbleSort
 {
     public static void Main()
     {

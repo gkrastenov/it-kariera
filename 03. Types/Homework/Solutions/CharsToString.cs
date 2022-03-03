@@ -4,6 +4,13 @@ class CharsToString
 {
     public static void Main()
     {
-        // Write your code here:
+        string sequence = string.Empty;
+        for (int i = 0; i < 3; i++)
+        {
+            char symbol = char.Parse(Console.ReadLine());
+            sequence += symbol;
+		}
+
+        Console.WriteLine(sequence);
     }
 }

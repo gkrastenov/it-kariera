@@ -4,6 +4,10 @@ class ConcatNames
 {
     public static void Main()
     {
-        // Write your code here:
+        string firstName = Console.ReadLine();
+        string lastName = Console.ReadLine();
+        string delimeter = Console.ReadLine();
+
+        Console.WriteLine($"{firstName}{delimeter}{lastName}");
     }
 }

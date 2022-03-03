@@ -4,6 +4,9 @@ class ReverseArrayOfStrings
 {
     public static void Main()
     {
-        // Write your code here:
+            string[] strings = Console.ReadLine().Split();
+            Array.Reverse(strings);
+
+            Console.WriteLine(String.Join(" ", strings));
     }
 }

@@ -13,9 +13,6 @@
 ## Деклариране на многомерен масив
 int[,] twoDimentionalArray;
 
-## Параметри на методите 
-int[,] twoDimentionalArray;
-
 Аналогично тримерен масив бихме декларирали така:
 int[,,] threeDimentionalArray;
 

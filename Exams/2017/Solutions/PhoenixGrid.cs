@@ -7,21 +7,20 @@ namespace Demo
     {
         public static void Main()
         {
-            List<string> input = new List<string>();
+            List<string> messages = new List<string>();
             while (true)
             {
                 string currentInput = Console.ReadLine();
-
                 if (currentInput == "ReadMe")
                     break;
-                input.Add(currentInput);
+                messages.Add(currentInput);
             }
 
-            foreach (var element in input)
+            for (int i = 0; i < messages.Count; i++)
             {
-                if (IsValid(element))
+                if(IsValid(messages[i]))
                 {
-                    if (IsPalindrom(element))
+                    if(IsPalindrom(messages[i]))
                         Console.WriteLine("YES");
                     else
                         Console.WriteLine("NO");
@@ -32,7 +31,7 @@ namespace Demo
                 }
             }
         }
-        
+
         public static bool IsValid(string text)
         {
             if (text.Length < 3)
@@ -41,26 +40,33 @@ namespace Demo
             if (text.Length == 3)
                 return true;
 
-            if (text.Contains('_'))
+            // jss.csh. -> invalid
+            if (text[text.Length - 1] == '.')
                 return false;
 
-            if (text.Contains(' '))
+            // A phrase CANNOT contain whitespace characters
+            // or the ‘_’ (underscore) character.
+
+            if (text.Contains(' ') || text.Contains('_'))
                 return false;
 
+            // ... . ... -> valid
+            // a.s . d.a -> valid -> 3 index
+            // 132.31$.ddd -> valid -> 3 index, 7 index
+            // 132.31$.ddd.aaa -> valid ->  3 index, 7 index, 11 index
             int index = 3;
             while (index < text.Length)
             {
-                if (index + 3 == text.Length - 1)
-                    break;
 
                 if (text[index] != '.')
                     return false;
 
                 index += 4;
             }
-
+         
             return true;
         }
+
         public static bool IsPalindrom(string text)
         {
             if (text.Length == 1)

@@ -10,7 +10,9 @@ namespace SinglyLinkedList
         {
             public T Value { get; set; }
             public Node<T> Next { get; set; }
-
+			
+			// Time Complexity = ?
+            // Space Complexity = ?
             public Node(T value, Node<T> next = null)
             {
                 this.Value = value;
@@ -22,6 +24,8 @@ namespace SinglyLinkedList
 
         public int Count { get; private set; }
 
+		// Time Complexity = ?
+        // Space Complexity = ?
         public void AddFirst(T value)
         {
             Node<T> node = new Node<T>(value);
@@ -37,7 +41,9 @@ namespace SinglyLinkedList
             this.head = node;
             this.Count++;
         }
-
+		
+		// Time Complexity = ?
+        // Space Complexity = ?
         public void AddLast(T item)
         {
             Node<T> node = new Node<T>(item);
@@ -58,12 +64,16 @@ namespace SinglyLinkedList
             this.Count++;
         }
 
+		// Time Complexity = ?
+        // Space Complexity = ?
         public T GetFirst()
         {
             IsEmpty();
             return this.head.Item;
         }
 
+		// Time Complexity = ?
+        // Space Complexity = ?
         public T GetLast()
         {
             IsEmpty();
@@ -76,6 +86,8 @@ namespace SinglyLinkedList
             return current.Item;
         }
 
+		// Time Complexity = ?
+        // Space Complexity = ?
         public T RemoveFirst()
         {
             IsEmpty();
@@ -86,6 +98,8 @@ namespace SinglyLinkedList
             return toReturnItem;
         }
 
+		// Time Complexity = ?
+        // Space Complexity = ?
         public T RemoveLast()
         {
             IsEmpty();

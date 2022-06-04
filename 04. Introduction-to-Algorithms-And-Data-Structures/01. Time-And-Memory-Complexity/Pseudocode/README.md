@@ -7,31 +7,31 @@
 Example 1: <br/>
 ```
 int param = 5;
-``` <br/>
+```
 
 Example 2: <br/>
 ```
 int n = Console.ReadLine();
 Console.WriteLine(n);
-``` <br/>
+``` 
 
 Example 3: <br/>
 ```
 int n = Console.ReadLine();
 Console.WriteLine(n * n);
-``` <br/>
+``` 
 
 Example 5: <br/>
 ```
 List<int> list = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
 Console.WriteLine(string.Join(' ', list));
-``` <br/>
+``` 
 
 Example 6: <br/>
 ```
 var something = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 Console.WriteLine(string.Join(' ', something));
-``` <br/>
+``` 
 
 Example 7: <br/>
 ```
@@ -40,8 +40,7 @@ for (int i = 0; i < n; i++)
 {
 	Console.WriteLine(i);
 }
-``` <br/>
-
+``` 
 
 Example 9: <br/>
 ```
@@ -53,8 +52,7 @@ for (int i = 0; i < n; i++)
 		Console.WriteLine(i + j);
     }
 }
-``` <br/>
-
+``` 
 
 Example 10: <br/>
 ```
@@ -66,7 +64,7 @@ for (int i = 0; i < n; i++)
 		list.Add(i + j);
     }
 }
-``` <br/>
+``` 
 
 Example 11: <br/>
 ```
@@ -80,7 +78,7 @@ for (int i = 0; i < n; i++)
         }
      }
 }
-``` <br/>
+``` 
 
 Example 12: <br/>
 ```

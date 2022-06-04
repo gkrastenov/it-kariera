@@ -28,6 +28,6 @@ O(f(n)) –  чете се "Big oh of f(n)" <br/>
 - `O(N!)` -> факториелна
 <br/>
 Брой операции <br/>
-![Брой операции](https://i.gyazo.com/4cc066a3954978a9b523a017ce06665c.png) <br/>
-
+![Брой операции](https://i.gyazo.com/4cc066a3954978a9b523a017ce06665c.png)
+<br/>
 ![Времева сложност и скорост на програмата](https://i.gyazo.com/d662c3136be07f046d2fc76f96a6df07.png)

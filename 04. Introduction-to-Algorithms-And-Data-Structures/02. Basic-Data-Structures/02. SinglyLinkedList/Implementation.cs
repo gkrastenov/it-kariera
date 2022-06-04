@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Problem04.SinglyLinkedList
+namespace SinglyLinkedList
 {
     public class SinglyLinkedList<T>
     {
@@ -98,28 +98,6 @@ namespace Problem04.SinglyLinkedList
             var toReturn = current.Item;
             current = null;
             return toReturn;
-
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            var current = this.head;
-            while (current != null)
-            {
-                yield return current.Item;
-                current = current.Next;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-            => this.GetEnumerator();
-
-        private void IsEmpty()
-        {
-            if (this.Count == 0 || this.head == null)
-            {
-                throw new InvalidOperationException();
-            }
         }
     }
 }

@@ -21,19 +21,19 @@ int n = Console.ReadLine();
 Console.WriteLine(n * n);
 ``` 
 
-Example 5: <br/>
+Example 4: <br/>
 ```
 List<int> list = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
 Console.WriteLine(string.Join(' ', list));
 ``` 
 
-Example 6: <br/>
+Example 5: <br/>
 ```
 var something = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 Console.WriteLine(string.Join(' ', something));
 ``` 
 
-Example 7: <br/>
+Example 6: <br/>
 ```
 int n = int.Parse(Console.ReadLine());
 for (int i = 0; i < n; i++)
@@ -42,7 +42,7 @@ for (int i = 0; i < n; i++)
 }
 ``` 
 
-Example 9: <br/>
+Example 7: <br/>
 ```
 int n = int.Parse(Console.ReadLine());
 for (int i = 0; i < n; i++)
@@ -54,7 +54,7 @@ for (int i = 0; i < n; i++)
 }
 ``` 
 
-Example 10: <br/>
+Example 8: <br/>
 ```
 var list = new List<int>();
 for (int i = 0; i < n; i++)
@@ -66,7 +66,7 @@ for (int i = 0; i < n; i++)
 }
 ``` 
 
-Example 11: <br/>
+Example 9: <br/>
 ```
 int n = int.Parse(Console.ReadLine());
 int[,] matrix = new int[n, n];
@@ -80,7 +80,7 @@ for (int i = 0; i < n; i++)
 }
 ``` 
 
-Example 12: <br/>
+Example 10: <br/>
 ```
         public static void Main()
         {

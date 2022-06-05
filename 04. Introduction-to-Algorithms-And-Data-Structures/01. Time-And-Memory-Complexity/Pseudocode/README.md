@@ -11,13 +11,13 @@ int param = 5;
 
 Example 2: <br/>
 ```
-int n = Console.ReadLine();
+int n = int.Parse(Console.ReadLine());
 Console.WriteLine(n);
 ``` 
 
 Example 3: <br/>
 ```
-int n = Console.ReadLine();
+int n = int.Parse(Console.ReadLine());
 Console.WriteLine(n * n);
 ``` 
 
@@ -76,8 +76,7 @@ for (int i = 0; i < n; i++)
         {
             matrix[i,j] = int.Parse(Console.ReadLine());
         }
-     }
-}
+  }
 ``` 
 
 Example 10: <br/>

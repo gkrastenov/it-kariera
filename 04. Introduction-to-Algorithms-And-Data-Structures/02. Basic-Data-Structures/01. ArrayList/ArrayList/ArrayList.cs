@@ -14,8 +14,8 @@ namespace CustomArrayList
         private int size;
         private int[] elements;
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(1)
+        // Space Complexity = O(initialCapacity)
         public ArrayList()
         {
             elements = new int[initialCapacity];
@@ -23,8 +23,8 @@ namespace CustomArrayList
             size = 0;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(1) амортезирана
+        // Space Complexity = O(1) Забележка: за целият клас ще имаме O(n) space, къдено n е броят на въведените елементи
         public void Add(int newElement)
         {
             if(size == capacity)
@@ -33,8 +33,8 @@ namespace CustomArrayList
             size++;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(n)
+        // Space Complexity = O(1)
         public void Remove(int element)
         {
             int index = IndexOfElement(element);
@@ -52,8 +52,8 @@ namespace CustomArrayList
             size--;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(n)
+        // Space Complexity = O(n)
         private void ExtendArray()
         {
             capacity *= extend;
@@ -65,15 +65,15 @@ namespace CustomArrayList
             elements = newSource;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(n)
+        // Space Complexity = O(1)
         public bool Contains(int element)
         {
             return IndexOfElement(element) != -1;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(1)
+        // Space Complexity = O(1)
         public int GetByIndex(int index)
         {
             if (index < 0 || index >= size)
@@ -81,8 +81,8 @@ namespace CustomArrayList
             return elements[index];
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(1)
+        // Space Complexity = O(1)
         public bool SetByIndex(int index, int element)
         {
             if (index < 0 || index >= size)
@@ -91,8 +91,8 @@ namespace CustomArrayList
             return true;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(N)
+        // Space Complexity = O(1)
         private int IndexOfElement(int element)
         {
             for (int i = 0; i < size; i++)
@@ -103,15 +103,15 @@ namespace CustomArrayList
             return -1;
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(1)
+        // Space Complexity = O(1)
         private bool Compare<T>(T first, T second)
         {
             return EqualityComparer<T>.Default.Equals(first, second);
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(n/2)
+        // Space Complexity = O(n/2)
         private void ShrinkArray()
         {
             if (size * extend == capacity)
@@ -122,11 +122,12 @@ namespace CustomArrayList
                     newSource[i] = elements[i];
                 }
                 capacity /= extend;
+				elements = newSource;
             }
         }
 
-        // Time Complexity = ?
-        // Space Complexity = ?
+        // Time Complexity = O(n)
+        // Space Complexity = O(n)
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();

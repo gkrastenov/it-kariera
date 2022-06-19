@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Exam
 {
@@ -46,9 +49,8 @@ namespace Exam
 
         private static void ShelfInformation()
         {
-            shelf.ShelfInformation();
-            /*StringBuilder info = shelf.ShelfInformation();
-            Console.WriteLine(info.ToString().Trim());*/
+            StringBuilder info = shelf.ShelfInformation();
+            Console.WriteLine(info.ToString().Trim());
         }
 
         private static void ReleaseBook(string arg)
@@ -77,7 +79,7 @@ namespace Exam
         {
             var book = shelf.CheckBookIsPresent(bookId);
 
-            Console.WriteLine(book != null ? $"Book: {book} is present."
+            Console.WriteLine(book != null ? $"{book} is present."
                 : "Book is not present");
         }
 

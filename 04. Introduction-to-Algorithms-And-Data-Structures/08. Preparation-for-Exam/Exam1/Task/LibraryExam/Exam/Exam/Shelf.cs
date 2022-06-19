@@ -1,155 +1,180 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+﻿using System.Text;
 
 namespace Exam
 {
-    public class Shelf
+    public class Shelf // represend linked list
     {
-        private Book head;
-        private Book tail;
-        private int count;
-        private List<string> special;//head
-        private List<string> books;//tail
+        // fields:
+        private Book head; // първа в поредицата
+        private Book tail; // последна в поредицата
 
-        public Book Head
-        {
-            get { return this.head; }
-            set { this.head = value; }
-        }
-        public Book Tail
-        {
-            get { return this.tail; }
-            set { this.tail = value; }
-        }
-        public int Count 
-        {
-            get { return this.count; }
-            set { this.count = value; }
-        }
-        
         public Shelf()
         {
-            special = new List<string>();
-            books = new List<string>();
+            head = null;
+            tail = null;
+            Count = 0;
         }
 
+        // брой книги
+        public int Count { get; private set; }
+
+        // Time complexity: O(1)
+        // Space comp.: O(1)
         public void AddBook(string bookId)
         {
-            this.books.Add(bookId);
-            this.Count++;
+            Book newBook = new Book(bookId);
+
+            // има 0 добавени книги
+            if (Count == 0)
+            {
+                head = newBook;
+                tail = newBook;
+            }
+            else
+            {
+                // има само 1 добавена книга
+                if (Count == 1)
+                {
+                    head.Next = newBook;
+                    tail = newBook;
+                }
+                else // има поне 2 добавени книги
+                {
+                    tail.Next = newBook;
+                    tail = newBook;
+                }
+            }
+            Count++;
         }
 
         public void AddSpecialBook(string bookId)
         {
-            this.special.Add(bookId);
-            this.Count++;
+            Book newBook = new Book(bookId);
+            if (Count == 0)
+            {
+                head = newBook;
+                tail = newBook;
+            }
+            else
+            {
+                newBook.Next = head;
+                head = newBook;
+            }
+            Count++;
         }
 
         public Book CheckBookIsPresent(string bookId)
         {
-            Book b = new Book(bookId);
-            if (this.books.Contains(bookId))
+            var currentBook = head;
+            while (currentBook != null)
             {
-                return b;
+                if (currentBook.BookId == bookId)
+                    return currentBook;
+                currentBook = currentBook.Next;
             }
-            else if (this.special.Contains(bookId))
-            {
-                return b;
-            }
-            else 
-            {
-                return default(Book);
-            }
+            return null;
         }
 
         public bool ReleaseBook(string bookId)
         {
-            if (this.books.Remove(bookId))
-            {
-                this.Count--;
-                return true;
-            }
-            else if (this.special.Remove(bookId))
-            {
-                this.Count--;
-                return true;
-            }
-            else
-            {
+            if (Count == 0)
                 return false;
-            }
-        }
 
+            if(head.BookId == bookId)
+            {
+                if (Count == 1)
+                {
+                    head = null;
+                    tail = null;
+                }
+                else
+                {
+                    head = head.Next;
+                }
+                
+                Count--;
+                return true;
+            }
+
+            var currentBook = head;
+            while (currentBook != null)
+            {
+                if (currentBook.Next != null)
+                {
+                    if (currentBook.Next.BookId == bookId)
+                    {
+                        currentBook.Next = currentBook.Next.Next;                      
+                        Count--;
+
+                        if (Count == 1)
+                            tail = head;
+                        else tail = currentBook.Next;
+
+                        return true;
+                    }
+                }
+                currentBook = currentBook.Next;
+            }
+            return false;
+        }
 
         public bool ReleaseBook(int index)
         {
-            bool flag = false;
-            for (int i = 0; i < this.books.Count; i++)
+            if (index < 0 || index >= Count)
+                return false;
+
+            if(index == 0)
             {
-                if (i == index)
+                if(Count == 1)
                 {
-                    try
-                    {
-                        this.books.Remove(this.books[i]);
-                        this.Count--;
-                        flag = true;
-                        break;
-                    }
-                    catch (Exception)
-                    {
-                        flag = false;
-                    }
+                    head = null;
+                    tail = null;
                 }
+                else
+                {
+                    head = head.Next;
+                }
+                Count--;
+                return true;
             }
-            if (flag == false)
+
+            int currentIndex = 0;
+            var currentBook = head;
+            while (currentBook != null)
             {
-                for (int i = 0; i < this.special.Count; i++)
+                if (currentIndex == index - 1)
                 {
-                    if (i == index)
-                    {
-                        try
-                        {
-                            this.special.Remove(this.special[i]);
-                            this.Count--;
-                            flag = true;
-                            break;
-                        }
-                        catch (Exception)
-                        {
-                            flag = false;
-                        }
-                    }
+                    if (currentBook.Next != null)
+                        currentBook.Next = currentBook.Next.Next;
+                    Count--;
+                    return true;
                 }
+                currentIndex++;
+                currentBook = currentBook.Next;
             }
-            return flag;
+
+            return false;
         }
 
-        public void ShelfInformation()
+        // Time complexity: O(n) n -> броя книги
+        // Space comp.: O(n)  n -> броя книги
+        public StringBuilder ShelfInformation()
         {
-            if (this.books.Count == 0 && this.special.Count == 0)
+            StringBuilder stringBuilder = new StringBuilder();
+            if (Count == 0)
             {
-                Console.WriteLine("Shelf is empty!");
+                stringBuilder.Append("Shelf is empty!");
+                return stringBuilder;
             }
-            else
+
+            // linear search
+            var currentBook = head;
+            while (currentBook != null)
             {
-                if (this.special.Count != 0)
-                {
-                    for (int i = special.Count-1; i >= 0 ; i--)
-                    {
-                        Console.WriteLine("Book: " + special[i]);
-                    }
-                }
-                if (this.books.Count != 0)
-                {
-                    foreach (var b in this.books)
-                    {
-                        Console.WriteLine("Book: " + b);
-                    }
-                }
+                stringBuilder.AppendLine(currentBook.ToString());
+                currentBook = currentBook.Next;
             }
-            
+            return stringBuilder;
         }
     }
 }

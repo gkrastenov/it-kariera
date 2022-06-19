@@ -1,34 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Exam
+﻿namespace Exam
 {
     public class Book
     {
-        private string bookId;
-        private Book next;
-        
         public Book(string bookId)
         {
-            this.BookId = bookId;
+            BookId = bookId;
+            Next = null;
         }
 
-        public string BookId 
-        {
-            get { return this.bookId; }
-            set { this.bookId = value; }
-        }
+        public string BookId { get; private set; }
 
-        public Book Next
-        {
-            get { return this.next; }
-            set { this.next = value; }
-        }
+        public Book Next { get; set; }
 
         public override string ToString()
         {
-            return this.BookId;
+            return $"Book: {BookId}";
         }
     }
 }

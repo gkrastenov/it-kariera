@@ -1,3 +1,4 @@
+-- task 1
 CREATE TABLE passports(
 passport_id int PRIMARY KEY,
 passport_number varchar(10)
@@ -32,6 +33,7 @@ foreign key (manufacturer_id)
 references manifactures(manufacturer_id)
 );
 
+-- task 2
 
 CREATE TABLE IF NOT EXISTS students (
 	student_id INT AUTO_INCREMENT PRIMARY KEY,
